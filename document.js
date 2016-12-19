@@ -36,7 +36,7 @@ function parseImage(fileContent, index) {
 
   let output = '';
   json.images.forEach((imageData) => {
-    if (!imageData.length) {
+    if (!imageData.image || !imageData.image.length) {
       return ;
     }
 
@@ -48,7 +48,7 @@ function parseImage(fileContent, index) {
       color: imageData.image[4]
     };
 
-    output += `<img src="${image.url}">`;
+    output += `<img src="${image.url}" width="${image.width}" height="${image.heigth}">`;
   });
 
   return output;
