@@ -1,3 +1,4 @@
+const https = require('https');
 const fs = require('fs');
 const yaml = require('yaml');
 const MarkdownIt = require('markdown-it');
@@ -36,6 +37,7 @@ function parseImage(fileContent, index) {
 
   let output = '';
   json.images.forEach((imageData) => {
+
     if (!imageData.image || !imageData.image.length) {
       return ;
     }
@@ -48,7 +50,12 @@ function parseImage(fileContent, index) {
       color: imageData.image[4]
     };
 
-    output += `<img src="${image.url}" width="${image.width}" height="${image.heigth}">`;
+    var file = fs.createWriteStream("images/" + image.name);
+    var request = https.get(image.url, function(response) {
+      response.pipe(file);
+    });
+
+    output += `<img src="images/${image.name}" width="${image.width}" height="${image.heigth}">`;
   });
 
   return output;
