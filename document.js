@@ -17,8 +17,12 @@ function parseCallout(fileContent, index) {
     throw (e);
   }
 
+  if (!json.body) {
+    json.body = "";
+  }
   return `<div class="alert alert-${json.type}" role="alert">
-    ${json.title}
+    <strong>${json.title}</strong><br />
+    ${json.body}
   </div>`;
 }
 
