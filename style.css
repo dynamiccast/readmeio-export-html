@@ -1,0 +1,72 @@
+/* Creates a vertical nav starting at 768px (sm) */
+@media (min-width: 768px) {
+   .bootstrap-vertical-nav .navbar .navbar-collapse {
+      padding: 0;
+      max-height: none;
+   }
+   .bootstrap-vertical-nav .navbar ul {
+      float: none;
+   }
+   .bootstrap-vertical-nav .navbar ul:not {
+      display: block;
+   }
+   .bootstrap-vertical-nav .navbar li {
+      float: none;
+      display: block;
+   }
+
+   .bootstrap-vertical-nav .navbar-nav .nav-item+.nav-item {
+      margin-left: 0;
+   }
+}
+
+/* Put any custom CSS you want for your menu when it is collapsed */
+@media (max-width: 768px) {
+   .bootstrap-vertical-nav {
+
+   }
+}
+
+.doc-page {
+    display: none;
+}
+
+.menu-title {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+.title {
+    font-weight: bold;
+    color: #1a75bC;
+    font-size: x-large;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    font-size: small;
+
+}
+
+.navbar-nav .nav-link {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.page-title {
+    margin-top: 100px;
+}
+
+.page-title h1 {
+    color: #444;
+    font-size: 25px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
