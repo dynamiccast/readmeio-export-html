@@ -71,6 +71,22 @@ function parseTitle(fileContent, index) {
   return output;
 }
 
+function parseApiHeader(fileContent, index) {
+  let size = fileContent.indexOf('[/block]', index) - index;
+  let json = fileContent.splice(index + 1, size - 1).join('');
+
+  try {
+    json = JSON.parse(json);
+  } catch (e) {
+    console.log(json);
+    console.error(e);
+
+    throw (e);
+  }
+
+  return `<h2>${json.title}</h2>`;
+}
+
 module.exports = function(fileContent) {
 
   let output = "";
@@ -88,6 +104,9 @@ module.exports = function(fileContent) {
       lineNbr++;
     } else if (lineNbr === 0 && line === '---') {
       output += parseTitle(fileContent, lineNbr);
+      lineNbr++;
+    } else if (line === '[block:api-header]'){
+      output += parseApiHeader(fileContent, lineNbr);
       lineNbr++;
     } else {
       output += md.render(line);
