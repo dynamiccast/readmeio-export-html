@@ -64,6 +64,11 @@
     font-size: 25px;
 }
 
+.page-image {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 hr {
     margin-top: 20px;
     margin-bottom: 20px;

@@ -59,7 +59,7 @@ function parseImage(fileContent, index) {
       response.pipe(file);
     });
 
-    output += `<img src="images/${image.name}" width="${image.width}" height="${image.heigth}">`;
+    output += `<img class="page-image" src="images/${image.name}" width="${image.width}" height="${image.heigth}">`;
   });
 
   return output;
