@@ -37,7 +37,7 @@ var generateMenu = function(menu) {
     if (menu.hasOwnProperty(key)) {
       output += '<h4 class="menu-title">' + _.upperCase(key) + '</h4>';
       menu[key].forEach(function(menuItem) {
-        output += '<li class="nav-item"><a class="nav-link" href="#" onclick="selectDoc(\'' + menuItem + '\')">' + menuItem + '</a></li>';
+        output += '<li class="nav-item"><a class="nav-link" href="#" onclick="selectDoc(\'' + menuItem + '\')">' + _.capitalize(_.lowerCase(menuItem)) + '</a></li>';
       });
     }
   }
