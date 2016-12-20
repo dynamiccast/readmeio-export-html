@@ -9,3 +9,4 @@ var selectPage = function() {
 $(window).on('hashchange', selectPage);
 
 selectPage();
+hljs.initHighlightingOnLoad();
