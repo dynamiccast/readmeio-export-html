@@ -91,6 +91,14 @@ function parseApiHeader(fileContent, index) {
   return `<h2>${json.title}</h2>`;
 }
 
+function parseMarkdown(line) {
+
+  // Test for links
+  line = line.replace('](doc:', '](#target=');
+
+  return md.render(line);
+}
+
 module.exports = function(fileContent) {
 
   let output = "";
@@ -113,7 +121,7 @@ module.exports = function(fileContent) {
       output += parseApiHeader(fileContent, lineNbr);
       lineNbr++;
     } else {
-      output += md.render(line);
+      output += parseMarkdown(line);
     }
 
     lineNbr++;
