@@ -106,6 +106,27 @@ function parseMarkdown(line) {
   return line;
 }
 
+function parseCode(fileContent, index) {
+  let size = fileContent.indexOf('[/block]', index) - index;
+  let json = fileContent.splice(index + 1, size - 1).join('');
+  let output = '';
+
+  try {
+    json = JSON.parse(json);
+  } catch (e) {
+    console.log(json);
+    console.error(e);
+
+    throw (e);
+  }
+
+  json.codes.forEach((code) => {
+    output += '<code>' + code.code.replace(new RegExp('\n', 'g'), '<br />') + '</code>';
+  });
+
+  return output;
+}
+
 module.exports = function(fileContent) {
 
   let output = "";
@@ -126,6 +147,9 @@ module.exports = function(fileContent) {
       lineNbr++;
     } else if (line === '[block:api-header]'){
       output += parseApiHeader(fileContent, lineNbr);
+      lineNbr++;
+    } else if (line === '[block:code]'){
+      output += parseCode(fileContent, lineNbr);
       lineNbr++;
     } else {
       output += parseMarkdown(line);
