@@ -94,7 +94,16 @@ function parseMarkdown(line) {
   // Test for links
   line = line.replace('](doc:', '](#target=');
 
-  return md.render(line);
+  line = md.render(line);
+
+  let icon = line.match(/\:fa-(.+?)\:/);
+  if (icon) {
+    let placeholder = icon[0];
+    let iconName = icon[1];
+
+    line = line.replace(placeholder, '<i class="fa fa-' + iconName + '" aria-hidden="true"></i>');
+  }
+  return line;
 }
 
 module.exports = function(fileContent) {
