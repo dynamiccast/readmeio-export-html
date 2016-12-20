@@ -80,3 +80,16 @@ h2 {
     font-size: x-large;
     margin-top: 30px;
 }
+
+.alert {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+ul {
+    margin-bottom: -5px;
+}
+
+ol {
+    margin-bottom: -5px;
+}
