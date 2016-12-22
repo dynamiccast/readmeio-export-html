@@ -1,7 +1,7 @@
 var selectPage = function() {
   var hash = location.hash.replace( /^#/, '');
 
-  var target = hash.split('target=')[1];
+  var target = hash.split('target=')[1] || 'welcome';
   $('.doc-page').hide();
   $('#' + target).show();
 
