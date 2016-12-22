@@ -31,6 +31,19 @@
       <div class="col-md-9">
         {{placeholder-content}}
       </div>
+
+      <!-- The Modal -->
+      <div id="modal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="image-modal">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
     </div>
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
