@@ -122,7 +122,7 @@ function parseCode(fileContent, index) {
   }
 
   json.codes.forEach((code) => {
-    output += '<pre><code class="sh">' + code.code.replace(new RegExp('\n', 'g'), '<br />') + '</code></pre>';
+    output += '<pre><code class="sh">' + code.code + '</code></pre>';
   });
 
   return output;
