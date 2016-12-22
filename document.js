@@ -93,7 +93,7 @@ function parseApiHeader(fileContent, index) {
 function parseMarkdown(line) {
 
   // Test for links
-  line = line.replace('](doc:', '](#target=');
+  line = line.replace(new RegExp(/\]\(doc\:/, 'g'), '](#target=');
 
   line = md.render(line);
 
