@@ -8,12 +8,22 @@ const parseDocument = require('./document');
 let menu = {};
 let content = '';
 
+var extractName = function(name) {
+
+  // if ordered document, ignore number in menu
+  if (name.match(/^([0-9]{2}-)/)) {
+    return name.substr(3);
+  }
+
+  return name;
+};
+
 var walkDir = function(dir, submenu) {
   let files = fs.readdirSync(dir);
 
   files.forEach(function (file) {
     if (fs.statSync(dir + file).isDirectory()) {
-      let newSubmenu = submenu[file] = [];
+      let newSubmenu = submenu[extractName(file)] = [];
       return walkDir(dir + file + '/', newSubmenu);
     }
     else {
@@ -23,8 +33,8 @@ var walkDir = function(dir, submenu) {
         let output = parseDocument(fileContent);
         let fileName = path.basename(file, '.md');
 
-        submenu.push(fileName);
-        content += '<div id="' + fileName + '" class="doc-page">' + output + '</div>';
+        submenu.push(extractName(fileName));
+        content += '<div id="' + extractName(fileName) + '" class="doc-page">' + output + '</div>';
       }
     }
   });
