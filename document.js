@@ -18,6 +18,7 @@ function parseCallout(fileContent, index) {
   }
 
   json.body = (json.body) ? parseMarkdown(json.body) : '';
+  json.title = (json.title) ? json.title : '';
   return `<div class="alert alert-${json.type}" role="alert">
     <strong>${json.title}</strong><br />
     ${json.body}
