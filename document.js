@@ -97,13 +97,18 @@ function parseMarkdown(line) {
 
   line = md.render(line);
 
-  let icon = line.match(/\:fa-(.+?)\:/);
-  if (icon) {
-    let placeholder = icon[0];
-    let iconName = icon[1];
+  let icon = {};
+  do {
+    icon = line.match(/\:fa-(.+?)\:/);
 
-    line = line.replace(placeholder, '<i class="fa fa-' + iconName + '" aria-hidden="true"></i>');
-  }
+    if (icon) {
+      let placeholder = icon[0];
+      let iconName = icon[1];
+
+      line = line.replace(placeholder, '<i class="fa fa-' + iconName + '" aria-hidden="true"></i>');
+    }
+  } while (icon)
+
   return line;
 }
 
