@@ -7,6 +7,7 @@ md = new MarkdownIt();
 function parseCallout(fileContent, index) {
   let size = fileContent.indexOf('[/block]', index) - index;
   let json = fileContent.splice(index + 1, size - 1).join('');
+  let output ='';
 
   try {
     json = JSON.parse(json);
@@ -17,11 +18,10 @@ function parseCallout(fileContent, index) {
     throw (e);
   }
 
-  json.body = (json.body) ? parseMarkdown(json.body) : '';
-  json.title = (json.title) ? json.title : '';
+  output += (json.title) ? `<strong>${json.title}</strong><br />` : '';
+  output += (json.body) ? parseMarkdown(json.body) : '';
   return `<div class="alert alert-${json.type}" role="alert">
-    <strong>${json.title}</strong><br />
-    ${json.body}
+    ${output}
   </div>`;
 }
 
