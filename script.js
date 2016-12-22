@@ -4,6 +4,10 @@ var selectPage = function() {
   var target = hash.split('target=')[1];
   $('.doc-page').hide();
   $('#' + target).show();
+
+  // Update link activeness
+  $('a[href^="#target"]').removeClass('active');
+  $('a[href$="'+ target +'"]').addClass('active');
 };
 
 $(window).on('hashchange', selectPage);
